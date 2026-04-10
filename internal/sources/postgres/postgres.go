@@ -171,7 +171,7 @@ func initPostgresConnectionPool(ctx context.Context, tracer trace.Tracer, name, 
 }
 
 func ConvertParamMapToRawQuery(queryParams map[string]string) string {
-	values := url.Values{}
+	values := make(url.Values, len(queryParams))
 	for k, v := range queryParams {
 		values.Set(k, v)
 	}
